@@ -20,7 +20,7 @@ const Carousel = ({ children: slides }) => {
   };
 
   return (
-    <div className="relative bg-old-page flex flex-col items-center rounded-3xl border-4 border-yellow-950 p-4 h-[80vh]">
+    <div className="relative bg-old-page flex flex-col items-center rounded-3xl border-4 border-yellow-950 p-4 h-[80vh] mt-[5vh] ">
       <h2 className="text-black font-bold text-6xl pb-6 absolute top-2 z-20">
         Beast Name
       </h2>
