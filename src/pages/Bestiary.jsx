@@ -27,9 +27,8 @@ const Bestiary = () => {
         </div>
         <article className="flex flex-col justify-center items-center mt-[10vh]">
           <Carousel>
-            {arr.map((i, index) => (
+            {arr.map((i) => (
               <img
-                key={index}
                 onClick={() => setShow(!show)}
                 className="object-fill opacity-90 sepia rounded-2xl shadow-xl shadow-gray-700 cursor-pointer"
                 src={i}
