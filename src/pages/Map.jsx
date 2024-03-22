@@ -22,16 +22,16 @@ const Map = () => {
   }, [showMap]);
 
   return (
-    <div>
+    <div className="relative">
       {/* MAPS */}
-      <div>
+      <div className="w-[100vw]">
         <img
-          className={`absolute top-0 left-0 ${mapOneVisibility}`}
+          className={`md:min-h-screen md:min-w-full h-full w-full overflow-auto top-0 left-0 ${mapOneVisibility}`}
           src="/our-world-map.jpg"
           alt=""
         />
         <img
-          className={`absolute top-0 left-0 ${mapTwoVisibility}`}
+          className={`md:min-h-screen md:min-w-full h-full w-full overflow-auto top-0 left-0 ${mapTwoVisibility}`}
           src="/dreamlands-map.jpg"
           alt=""
         />

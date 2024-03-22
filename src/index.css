@@ -11,8 +11,8 @@
   }
   .scrollbar::-webkit-scrollbar-thumb {
     background-color: #342503;
+    transition: width 0.3s;
   }
-
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #555;
   }

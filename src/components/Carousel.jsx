@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { initializeCreatures } from "../reducers/creaturesReducer";
 import { setImageIndex } from "../reducers/indexReducer";
@@ -15,6 +15,7 @@ const Carousel = () => {
   const creatures = useSelector((state) => state.creatures);
   const [show, setShow] = useState(false);
   const visibility = show ? "visible" : "invisible";
+  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
     dispatch(initializeCreatures());
@@ -60,7 +61,9 @@ const Carousel = () => {
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 items-center px-5">
-              <p className="sm:w-[36vw] h-[40vh] font-bold text-xl overflow-y-auto scrollbar">
+              <p
+                className={`sm:w-[40vw] h-[40vh] font-bold text-xl overflow-y-auto scrollbar`}
+              >
                 {creature.overview}
               </p>
 

@@ -6,7 +6,7 @@ const Home = () => {
     <div>
       {/* BACKGROUND */}
       <div className="flex flex-col items-center">
-        <div className="absolute top-0 z-[-2] min-h-screen w-screen bg-lc1 bg-fixed"></div>
+        <div className="absolute top-0 z-[-2] min-h-screen w-screen bg-lc1 bg-cover"></div>
       </div>
       {/* HERO */}
       <Hero />
