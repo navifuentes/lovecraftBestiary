@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { initializeCreatures } from "../reducers/creaturesReducer";
 import { setImageIndex } from "../reducers/indexReducer";
 
+import Skeleton from "react-loading-skeleton";
 import CloseIcon from "./icons/Close";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -22,6 +23,8 @@ const Carousel = () => {
   const handleSwipe = (index) => {
     dispatch(creatureIndex(index));
   };
+  const capitalizeFirstLetter = (string) =>
+    string.charAt(0).toUpperCase() + string.slice(1);
 
   const settings = {
     dots: false,
@@ -36,35 +39,42 @@ const Carousel = () => {
   };
 
   if (creatures.length === 0) {
-    return <p>Loading...</p>;
+    return (
+      <div className="bg-old-page">
+        <Skeleton />
+        <div>
+          <Skeleton count={10} width={"36vw"} />
+          <Skeleton width={"40vw"} />
+        </div>
+      </div>
+    );
   }
 
   return (
     <div className="w-[90vw] h-[80vh] bg-old-page border-4 border-orange-950 rounded-3xl">
-      <h2 key={index} className="text-4xl font-bold">
-        {creatures[creatureIndex].name}
-      </h2>
+      <Slider {...settings} onSwipe={handleSwipe}>
+        {creatures.map((creature, index) => (
+          <div key={index}>
+            <h2 className="text-4xl text-center font-bold">
+              {capitalizeFirstLetter(creature.name)}
+            </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 items-center px-5">
-        <p
-          key={index}
-          className="sm:w-[36vw] h-[40vh] font-bold text-xl overflow-y-auto"
-        >
-          {creatures[creatureIndex].overview}
-        </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 items-center px-5">
+              <p className="sm:w-[36vw] h-[40vh] font-bold text-xl overflow-y-auto scrollbar">
+                {creature.overview}
+              </p>
 
-        <Slider {...settings}>
-          {creatures.map((creature, index) => (
-            <img
-              key={index}
-              className="object-contain h-[60vh] w-[40vw] opacity-85 cursor-pointer"
-              src={creature.img[0]}
-              alt={creature.name}
-              onClick={() => setShow(!show)}
-            />
-          ))}
-        </Slider>
-      </div>
+              <img
+                className="object-contain h-[60vh] w-[40vw] opacity-85 cursor-pointer"
+                src={creature.img[0]}
+                alt={creature.name}
+                onFocusCapture={() => dispatch(setImageIndex(index))}
+                onClick={() => setShow(!show)}
+              />
+            </div>
+          </div>
+        ))}
+      </Slider>
       <article
         className={`absolute top-0 left-0 bg-black/85 w-[100vw] h-[100vh] flex flex-col justify-center items-center z-40 ${visibility}`}
       >

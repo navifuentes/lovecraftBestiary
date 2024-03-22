@@ -3,13 +3,28 @@
 @tailwind utilities;
 
 @layer base {
+  .scrollbar::-webkit-scrollbar {
+    width: 0.2em;
+  }
+  .scrollbar::-webkit-scrollbar-track {
+    background: #1c00ff00;
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #342503;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
   .mapNav {
     transition: ease-in-out;
     visibility: visible;
     animation: showMapNav 0.3s linear;
   }
   @keyframes showMapNav {
-    0%,100% {
+    0%,
+    100% {
       visibility: hidden;
     }
   }
