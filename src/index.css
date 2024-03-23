@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  .scrolly {
-    scrollbar-color: red orange;
-    scrollbar-width: 1em;
-  }
   .scrollbar::-webkit-scrollbar {
     width: 0.2em;
   }
