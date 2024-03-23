@@ -22,7 +22,7 @@ const Map = () => {
   }, [showMap]);
 
   return (
-    <div className="relative">
+    <div className="sm:absolute relative">
       {/* MAPS */}
       <div className="w-[100vw]">
         <img

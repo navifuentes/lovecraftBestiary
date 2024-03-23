@@ -11,18 +11,18 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Carousel = () => {
   const dispatch = useDispatch();
-  const creatureIndex = useSelector((state) => state.imageIndex);
   const creatures = useSelector((state) => state.creatures);
   const [show, setShow] = useState(false);
+  const [imgIndex, setImgIndex] = useState(0);
   const visibility = show ? "visible" : "invisible";
-  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
     dispatch(initializeCreatures());
   }, []);
 
-  const handleSwipe = (index) => {
-    dispatch(creatureIndex(index));
+  const handleClick = (index) => {
+    setShow(!show);
+    setImgIndex(index);
   };
   const capitalizeFirstLetter = (string) =>
     string.charAt(0).toUpperCase() + string.slice(1);
@@ -36,7 +36,6 @@ const Carousel = () => {
     slidesToScroll: 1,
     lazyLoad: true,
     adaptiveHeight: false,
-    onSwipe: handleSwipe,
   };
 
   if (creatures.length === 0) {
@@ -52,34 +51,36 @@ const Carousel = () => {
   }
 
   return (
-    <div className="w-[90vw] h-[80vh] bg-old-page border-4 border-orange-950 rounded-3xl">
-      <Slider {...settings} onSwipe={handleSwipe}>
+    <div className="w-[90vw] h-[80vh] py-[3vh] bg-old-page border-4 border-orange-950 rounded-3xl">
+      <Slider {...settings}>
         {creatures.map((creature, index) => (
           <div key={index}>
-            <h2 className="text-4xl text-center font-bold">
+            <h2 className="text-4xl text-center font-bold mb-[5vh]">
               {capitalizeFirstLetter(creature.name)}
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 items-center px-5">
+            <div className="flex sm:flex-row flex-col-reverse justify-center items-center px-5">
               <p
-                className={`sm:w-[40vw] h-[40vh] font-bold text-xl overflow-y-auto scrollbar`}
+                className={`mr-1 mb-2 sm:mb-0
+                sm:w-[40vw]
+                font-bold text-xl overflow-y-auto 
+                text-center scrollbar`}
               >
                 {creature.overview}
               </p>
 
               <img
-                className="object-contain h-[60vh] w-[40vw] opacity-85 cursor-pointer"
+                className="object-contain max-h-[60vh] w-[40vw] opacity-85 cursor-pointer"
                 src={creature.img[0]}
                 alt={creature.name}
-                onFocusCapture={() => dispatch(setImageIndex(index))}
-                onClick={() => setShow(!show)}
+                onClick={() => handleClick(index)}
               />
             </div>
           </div>
         ))}
       </Slider>
       <article
-        className={`absolute top-0 left-0 bg-black/85 w-[100vw] h-[100vh] flex flex-col justify-center items-center z-40 ${visibility}`}
+        className={`absolute top-0 left-0 bg-black/85 w-[100vw] h-[100vh] flex flex-col justify-center items-center z-10 ${visibility}`}
       >
         <button
           className="bg-white/20 rounded-full mb-2"
@@ -87,11 +88,7 @@ const Carousel = () => {
         >
           <CloseIcon h={"3em"} w={"3em"} />
         </button>
-        <img
-          className="h-[90vh] "
-          src={creatures[creatureIndex].img[0]}
-          alt={creatures[creatureIndex].overview}
-        />
+        <img className="h-[90vh] " src={creatures[imgIndex].img[0]} alt="" />
       </article>
     </div>
   );
