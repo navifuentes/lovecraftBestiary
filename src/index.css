@@ -17,6 +17,20 @@
     background: #555;
   }
 
+  .scrollbar-home::-webkit-scrollbar {
+    width: 0.5em;
+  }
+  .scrollbar-home::-webkit-scrollbar-track {
+    background: #1c00ff00;
+  }
+  .scrollbar-home::-webkit-scrollbar-thumb {
+    background: #1c00ff00;
+    transition: width 0.3s;
+  }
+  .scrollbar-home::-webkit-scrollbar-thumb:hover {
+    background: #191919;
+  }
+
   .mapNav {
     transition: ease-in-out;
     visibility: visible;
