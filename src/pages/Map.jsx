@@ -24,13 +24,13 @@ const Map = () => {
   return (
     <div className="bg-lc2 w-screen h-screen py-[5vh]">
       {/* MAPS */}
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center ">
         <iframe
-          className={`sm:w-1/2 h-[90vh] w-screen ${mapOneVisibility}`}
+          className={`px-[10vh] h-[90vh] w-screen ${mapOneVisibility}`}
           src="/our-world-map.jpg"
         ></iframe>
         <iframe
-          className={`sm:w-1/2 h-[90vh] w-screen ${mapTwoVisibility}`}
+          className={`px-[10vh] h-[90vh] w-screen ${mapTwoVisibility}`}
           src="/dreamlands-map.jpg"
         ></iframe>
       </div>
@@ -84,5 +84,3 @@ const Map = () => {
 };
 
 export default Map;
-
-/* text-3xl text-white sticky z-10 mr-[90vw] mt-[40vh] flex flex-col ml-4 */
