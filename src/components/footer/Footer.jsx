@@ -10,7 +10,7 @@ const Footer = () => {
       w-full py-2
       bg-gradient-to-t from-black/90 to-black/0`}
     >
-      <p className="text-white text-2xl sm:text-4xl ">© Iván Fuentes</p>
+      <p className="text-white  sm:text-4xl ">© Iván Fuentes</p>
       <nav className="text-white flex gap-x-8 justify-center items-center">
         <span className="flex x-gap-4 sm:text-4xl">
           <GithubIcon h={"1em"} w={"1em"} />

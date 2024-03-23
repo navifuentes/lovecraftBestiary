@@ -22,19 +22,17 @@ const Map = () => {
   }, [showMap]);
 
   return (
-    <div className="sm:absolute relative">
+    <div className="bg-lc2 w-screen h-screen py-[5vh]">
       {/* MAPS */}
-      <div className="w-[100vw]">
-        <img
-          className={`md:min-h-screen md:min-w-full h-full w-full overflow-auto top-0 left-0 ${mapOneVisibility}`}
+      <div className="flex flex-col items-center justify-center">
+        <iframe
+          className={`sm:w-1/2 h-[90vh] w-screen ${mapOneVisibility}`}
           src="/our-world-map.jpg"
-          alt=""
-        />
-        <img
-          className={`md:min-h-screen md:min-w-full h-full w-full overflow-auto top-0 left-0 ${mapTwoVisibility}`}
+        ></iframe>
+        <iframe
+          className={`sm:w-1/2 h-[90vh] w-screen ${mapTwoVisibility}`}
           src="/dreamlands-map.jpg"
-          alt=""
-        />
+        ></iframe>
       </div>
       {/* MAPS BUTTON NAV */}
       <div className="fixed flex flex-col gap-y-4 top-[40vh] left-5">

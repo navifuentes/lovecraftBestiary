@@ -63,8 +63,9 @@ const Carousel = () => {
               <p
                 className={`mr-1 mb-2 sm:mb-0
                 sm:w-[40vw]
-                font-bold text-xl overflow-y-auto 
-                text-center scrollbar`}
+                sm:h-[60vh] h-[40vh]
+                font-bold text-xl text-center
+                overflow-y-auto scrollbar`}
               >
                 {creature.overview}
               </p>
